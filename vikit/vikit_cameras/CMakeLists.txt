@@ -4,7 +4,12 @@ cmake_minimum_required (VERSION 2.8.3)
 find_package(catkin_simple REQUIRED)
 catkin_simple(ALL_DEPS_REQUIRED)
 
+
 include(SvoSetup)
+
+find_package(OpenCV 3.4.1 REQUIRED PATHS "/storage_ssd/opencv-3.4.1" NO_DEFAULT_PATH)
+message(WARNING "OpenCV_VERSION: ${OpenCV_VERSION}")
+
 
 set(HEADERS
   include/vikit/cameras.h
@@ -41,7 +46,7 @@ set(SOURCES
   )
 
 cs_add_library(${PROJECT_NAME} ${SOURCES} ${HEADERS})
-target_link_libraries(${PROJECT_NAME} yaml-cpp)
+target_link_libraries(${PROJECT_NAME} yaml-cpp ${OpenCV_LIBRARIES})
 
 ################################################################################
 # Tests
@@ -49,7 +54,7 @@ target_link_libraries(${PROJECT_NAME} yaml-cpp)
 catkin_add_gtest(${PROJECT_NAME}_tests
   test/test_cameras
 )
-target_link_libraries(${PROJECT_NAME}_tests ${PROJECT_NAME})
+target_link_libraries(${PROJECT_NAME}_tests ${PROJECT_NAME} ${OpenCV_LIBRARIES})
 
 ################################################################################
 # Install

@@ -1,0 +1,77 @@
+label: "munnrc_m600"
+cameras:
+- camera:
+    label: cam0
+    line-delay-nanoseconds: 0
+    image_height: 1080
+    image_width: 1440
+    type: pinhole
+    intrinsics:
+      cols: 1
+      rows: 4
+      data: [829.224, 829.454, 833.937, 562.509]
+    distortion:
+      type: equidistant  
+      parameters:
+        cols: 1
+        rows: 4
+        data: [-0.0764245, 0.0322856, -0.0445168, 0.0163317]
+  T_B_C:
+    cols: 4
+    rows: 4
+    data: [ 0.00235643,  0.99997843, -0.00613037, -0.25805624,
+          -0.99960218,  0.00218315, -0.02811962, -0.01138283,
+          -0.02810563,  0.0061942,   0.99958577,  0.09243762,
+           0, 0, 0, 1]
+
+imu_params:
+  delay_imu_cam: 0.0297405129318
+  max_imu_delta_t: 0.01
+  acc_max: 176.0
+  omega_max: 17
+  sigma_omega_c: 0.004
+  sigma_acc_c: 0.08
+  sigma_omega_bias_c: 0.0001
+  sigma_acc_bias_c: 0.00004
+  sigma_integration: 0.0
+  g: 9.803
+  imu_rate: 400
+
+imu_initialization:
+  velocity: [0.0, 0, 0.0]
+  omega_bias: [0.0, 0, 0.0]
+  acc_bias: [0.0, 0.0, 0.0]
+  velocity_sigma: 2.0
+  omega_bias_sigma: 0.01
+  acc_bias_sigma: 0.1
+
+
+
+#model_type: KANNALA_BRANDT
+#camera_name: camera
+#image_width: 1440 
+#image_height: 1080
+#projection_parameters:
+#   k2: -0.0764245
+#   k3: 0.0322856
+#   k4: -0.0445168
+#   k5: 0.0163317
+#   mu: 829.224
+#   mv: 829.454
+#   u0: 833.937
+#   v0: 562.509
+
+
+
+#imu parameters       The more accurate parameters you provide, the better performance
+#acc_n: 0.08          # accelerometer measurement noise standard deviation. 
+#gyr_n: 0.004        # gyroscope measurement noise standard deviation.     
+#acc_w: 0.00004        # accelerometer bias random work noise standard deviation.  
+#gyr_w: 0.0001       # gyroscope bias random work noise standard deviation.     
+#g_norm: 9.803     # gravity magnitude
+
+#unsynchronization parameters
+#estimate_td: 0                      # online estimate time offset between camera and imu
+#td: -0.0297405129318                        # initial value of time offset. unit s. readed image clock + td = real image clock (IMU clock)
+# -0.02932 for the un sync data...., +0.006 for synced data (i.e., 6ms capture delay from hardware trigger)
+

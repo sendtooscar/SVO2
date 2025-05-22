@@ -15,8 +15,9 @@ pipeline_is_stereo: False
 # To run faster, you can decrease `max_fts` and `max_n_kfs`, for example:
 # max_fts: 120
 # max_n_kfs: 5
-max_fts: 180
-max_n_kfs: 30
+max_fts: 300
+max_n_kfs: 10
+quality_min_fts: 20
 
 # Map scale when initialized (not used for stereo)
 # Increase if the initial scene depth is larger
@@ -110,3 +111,5 @@ mean_depth_inv: 0.3
 
 # Disable ceres backend
 use_ceres_backend: false
+#ceres_num_imu_frames: 10
+#backend_refine_extrinsics: 1

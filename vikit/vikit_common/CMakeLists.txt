@@ -3,7 +3,9 @@ cmake_minimum_required(VERSION 2.8.3)
 
 find_package(catkin_simple REQUIRED)
 catkin_simple(ALL_DEPS_REQUIRED)
-find_package(OpenCV REQUIRED)
+#FIND_PACKAGE(OpenCV REQUIRED)
+find_package(OpenCV 3.4.1 REQUIRED PATHS "/storage_ssd/opencv-3.4.1" NO_DEFAULT_PATH)
+message(WARNING "OpenCV_VERSION: ${OpenCV_VERSION}")
 
 include(SvoSetup)
 

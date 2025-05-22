@@ -7,9 +7,9 @@ img_align_prior_lambda_trans: 0.0
 # If set to false, we process the next frame(s) only when the depth update is finished
 use_threaded_depthfilter: False
 # If the number of features are below this number, consider as failure
-quality_min_fts: 40
+quality_min_fts: 10
 # If the number of features reduce by this number for consecutive frames, consider as failure
-quality_max_drop_fts: 80
+quality_max_drop_fts: 280
 
 map_scale: 5.0
 kfselect_criterion: FORWARD
@@ -29,4 +29,5 @@ reprojector_affine_est_gain: true
 
 
 # Disable ceres backend
-use_ceres_backend: false
+use_ceres_backend: true
+automatic_reinitialization: true

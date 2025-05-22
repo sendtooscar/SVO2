@@ -4,6 +4,9 @@ cmake_minimum_required(VERSION 2.8.3)
 find_package(catkin_simple REQUIRED)
 catkin_simple(ALL_DEPS_REQUIRED)
 
+find_package(OpenCV 3.4.1 REQUIRED PATHS "/storage_ssd/opencv-3.4.1" NO_DEFAULT_PATH)
+#target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBRARIES})
+
 ################################################################################
 # generic setup (compiler flags, etc.)
 include(SvoSetup)
@@ -75,42 +78,42 @@ set(SOURCES
   )
 
 cs_add_library(${PROJECT_NAME} ${SOURCES} ${HEADERS})
-
+target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBRARIES})
 ##########
 # GTESTS #
 ##########
 catkin_add_gtest(test_backend_id test/test_backend_id.cpp)
-target_link_libraries(test_backend_id ${PROJECT_NAME})
+target_link_libraries(test_backend_id ${PROJECT_NAME} ${OpenCV_LIBRARIES})
 
 catkin_add_gtest(test_estimator test/test_estimator.cpp)
-target_link_libraries(test_estimator ${PROJECT_NAME})
+target_link_libraries(test_estimator ${PROJECT_NAME} ${OpenCV_LIBRARIES})
 
 catkin_add_gtest(test_homogeneous_point_error test/test_homogeneous_point_error.cpp)
-target_link_libraries(test_homogeneous_point_error ${PROJECT_NAME})
+target_link_libraries(test_homogeneous_point_error ${PROJECT_NAME} ${OpenCV_LIBRARIES})
 
 catkin_add_gtest(test_map test/test_map.cpp)
-target_link_libraries(test_map ${PROJECT_NAME})
+target_link_libraries(test_map ${PROJECT_NAME} ${OpenCV_LIBRARIES})
 
 catkin_add_gtest(test_marginalization test/test_marginalization.cpp)
-target_link_libraries(test_marginalization ${PROJECT_NAME})
+target_link_libraries(test_marginalization ${PROJECT_NAME} ${OpenCV_LIBRARIES})
 
 catkin_add_gtest(test_pose_error test/test_pose_error.cpp)
-target_link_libraries(test_pose_error ${PROJECT_NAME})
+target_link_libraries(test_pose_error ${PROJECT_NAME} ${OpenCV_LIBRARIES})
 
 catkin_add_gtest(test_pose_local_parameterization test/test_pose_local_parameterization.cpp)
-target_link_libraries(test_pose_local_parameterization ${PROJECT_NAME})
+target_link_libraries(test_pose_local_parameterization ${PROJECT_NAME} ${OpenCV_LIBRARIES})
 
 catkin_add_gtest(test_reprojection_error test/test_reprojection_error.cpp)
-target_link_libraries(test_reprojection_error ${PROJECT_NAME})
+target_link_libraries(test_reprojection_error ${PROJECT_NAME} ${OpenCV_LIBRARIES})
 
 catkin_add_gtest(test_relative_pose_error test/test_relative_pose_error.cpp)
-target_link_libraries(test_relative_pose_error ${PROJECT_NAME})
+target_link_libraries(test_relative_pose_error ${PROJECT_NAME} ${OpenCV_LIBRARIES})
 
 catkin_add_gtest(test_speed_and_bias_error test/test_speed_and_bias_error.cpp)
-target_link_libraries(test_speed_and_bias_error ${PROJECT_NAME})
+target_link_libraries(test_speed_and_bias_error ${PROJECT_NAME} ${OpenCV_LIBRARIES})
 
 catkin_add_gtest(test_imu_error test/test_imu_error.cpp)
-target_link_libraries(test_imu_error ${PROJECT_NAME})
+target_link_libraries(test_imu_error ${PROJECT_NAME} ${OpenCV_LIBRARIES})
 
 ##########
 # EXPORT #

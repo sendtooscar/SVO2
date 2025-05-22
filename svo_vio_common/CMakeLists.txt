@@ -6,6 +6,9 @@ catkin_simple(ALL_DEPS_REQUIRED)
 
 list(APPEND catkin_LIBRARIES)
 
+find_package(OpenCV 3.4.1 REQUIRED PATHS "/storage_ssd/opencv-3.4.1" NO_DEFAULT_PATH)
+
+
 #############
 # LIBRARIES #
 #############
@@ -23,7 +26,7 @@ set(SOURCES
   )
 
 cs_add_library(${PROJECT_NAME} ${SOURCES} ${HEADERS})
-
+target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBRARIES})
 
 ##########
 # GTESTS #
