@@ -1,3 +1,19 @@
+## Testing for MUNFRL dataset
+Please clone repository and follow instructions below for svo installation.
+The local opencv installation file should be updated in the CMAKE files for building. 
+Tested on Nvidia AGX Xavier developer kit. 
+
+Download test dataset bag files here: https://mun-frl-vil-dataset.readthedocs.io/en/latest/
+
+For M600 drone sequences
+$roslaunch svo_ros lighthouse_mono_frontend_imu.launch
+$rosbag play /storage_ssd/lighthouse_francis/flight_dataset5_fixed.bag -s 70
+ 
+For Bell 412 sequences 
+$roslaunch svo_ros bell412_mono_frontend_imu.launch
+$rosbag play /storage_ssd/bell412_dataset5/bell412_dataset5.bag -s 15 (initialization sensitive, worked starting 15s for this dataset)
+
+
 # rpg_svo_pro
 
 This repo includes **SVO Pro** which is the newest version of Semi-direct Visual Odometry (SVO) developed over the past few years at the Robotics and Perception Group (RPG).
